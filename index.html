@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="port/SPACE FILLET LOGO.png">
+    <title>SPACE FILLET - Home</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+   
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; 
+    background-color: #000;
+}
+
+.snap-container {
+    height: 100vh; 
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; 
+    scroll-behavior: smooth;
+}
+
+
+.snap-section {
+    position: relative;
+    height: 100vh; 
+    width: 100%;
+    scroll-snap-align: start; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.snap-section1 {
+    position: relative;
+    width: 100%;
+    scroll-snap-align: start; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.snap-section img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.7); 
+}
+.snap-section video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.7); /* Darkens the video slightly so text is readable */
+}
+
+/* --- Center Text Overlay (Matching the Video) --- */
+.center-content {
+    position: relative;
+    z-index: 10; /* Sits above the image */
+    text-align: center;
+    color: white;
+}
+
+.center-content h1 {
+    font-size: 56px;
+    font-weight: 300;
+    letter-spacing: 8px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+
+.discover-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    border-radius: 30px; 
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.discover-btn:hover {
+    background-color: #a89f81; 
+    color: white;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    color: white;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+}
+    </style>
+
+</head>
+<body>
+
+    <nav class="navbar project-nav">
+        <div class="logo">
+            <div class="logo-symbol"><img src="port/SPACE FILLET LOGO.png" alt="Space Fillet Logo" style="height: 60px; margin-right: 10px;"></div>
+            <div class="logo-text">SPACE <br>FILLET</div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="protfolio.html">PORTFOLIO</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+
+        <div class="nav-icons">
+            <span class="icon menu-icon">&#9776;</span> 
+        </div>
+    </nav>
+
+    <main class="snap-container">
+
+                <section class="snap-section">
+            <video autoplay muted loop playsinline poster="your-fallback-image.jpg" class="background-video">
+  <source src="index/IMG_9174.MP4" type="video/mp4">
+</video>
+            <div class="center-content">
+                <h1>The Veiled House</h1>
+                <a href="portf3.html" class="discover-btn">DISCOVER NOW</a>
+            </div>
+        </section>
+
+                        <section class="snap-section">
+            <video autoplay muted loop playsinline poster="your-fallback-image.jpg" class="background-video">
+  <source src="index/Video Project.mp4" type="video/mp4">
+</video>
+            <div class="center-content">
+                <h1>The Clay House</h1>
+                <a href="portf4.html" class="discover-btn">DISCOVER NOW</a>
+            </div>
+        </section>
+
+                        <section class="snap-section">
+            <video autoplay muted loop playsinline poster="your-fallback-image.jpg" class="background-video">
+  <source src="index/Video Project 1.mp4" type="video/mp4">
+</video>
+            <div class="center-content">
+                <h1>House Of Colors</h1>
+                <a href="portf2.html" class="discover-btn">DISCOVER NOW</a>
+            </div>
+        </section>
+
+                                <section class="snap-section">
+            <video autoplay muted loop playsinline poster="your-fallback-image.jpg" class="background-video">
+  <source src="index/Video Project 3.mp4" type="video/mp4">
+</video>
+            <div class="center-content">
+                <h1>Ivory Home</h1>
+                <a href="portf1.html" class="discover-btn">DISCOVER NOW</a>
+            </div>
+        </section >
+
+        <section class="snap-section1">
+            <footer class="site-footer">
+        <div class="footer-container">
+            
+            <div class="footer-column">
+                <h4 class="gold-text">Studio Website</h4>
+                <a href="http://www.spacefillet.in" class="white-link underline" style="text-decoration: none;">www.spacefillet.in</a>
+                
+                <h4 class="gold-text">Email Address</h4>
+                <p class="white-link">enquiries@spacefillet.in</p>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="gold-text">Phone No</h4>
+                <p class="white-text">+91 7838426218, +91 8700052413, +91 9999130834</p>
+                
+                <h4 class="gold-text">Office Address</h4>
+                <a href="https://maps.app.goo.gl/HWMFcU3Bg2t2Ls2q8" style="text-decoration: none;"><p class="white-text">TS-930, HOPE TOWER, GALAXY BLUE SAPPHIRE MALL, GREATER NOIDA WEST, UTTAR PRADESH</p></a>
+            </div>
+
+            <div class="footer-column right-align">
+                <h2 class="footer-logo">SPACE FILLET</h2>
+                <div class="footer-nav-links">
+                    <a href="https://www.instagram.com/space.fillet?igsh=MXFseHA5b2xmaThwMw%3D%3D&utm_source=qr"><img src="index/insta.PNG" alt="" style="height: 30px;"></a>
+                    <a href="https://www.facebook.com/share/17zHxAiUyJ/?mibextid=wwXIfr"><img src="index/facebook.png" alt="" style="height: 30px;"></a>
+                   
+                </div>
+                <p class="copyright">SPACE FILLET 2023. All rights reserved</p>
+                
+            </div>
+
+        </div>
+    </footer>
+        </section>
+
+    </main>
+
+    
+
+    <script>
+        const menuIcon = document.querySelector('.menu-icon');
+        const navLinks = document.querySelector('.nav-links');
+        if (menuIcon) {
+            menuIcon.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

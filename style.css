@@ -1,0 +1,1339 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #1a1a1a; /* Dark background like the video */
+    color: #ffffff;
+}
+
+/* --- Navigation Bar Styling --- */
+/* --- 1. Base Navbar (Always Fixed) --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    z-index: 1000;
+    
+    /* Animation: Smoothly slide comfortably */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    
+    /* Default: Transparent for the top of the page */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    transform: translateY(0); /* Default position: Visible */
+}
+
+/* --- 2. Hidden State (Scrolled Down) --- */
+.navbar.scroll-down {
+    transform: translateY(-100%); /* Slide UP and OUT of view */
+}
+
+/* --- 3. Visible State (Scrolled Up) --- */
+.navbar.scroll-up {
+    transform: translateY(0); /* Slide DOWN into view */
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+    background-image: none; /* Remove gradient */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* --- State 1: Hidden (Scrolled Down) --- */
+.navbar.hidden {
+    top: -100px; /* Moves the bar upwards out of sight */
+}
+
+/* --- State 2: Visible & Dark (Scrolled Up) --- */
+.navbar.visible-bg {
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background when scrolling up */
+    background-image: none; /* Remove gradient */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh; /* Full screen height */
+    background-image: url('https://source.unsplash.com/1600x900/?architecture,modern');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Dark overlay so text pops */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4); 
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+/* --- Portfolio Grid --- */
+.portfolio {
+    padding: 50px;
+}
+
+.portfolio h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.grid-container {
+    display: grid;
+    /* This creates the layout: roughly 3 columns that auto-fit */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px;
+}
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect: Zoom image and show text */
+.project-card:hover img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .overlay {
+    opacity: 1;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 40px;
+    background-color: #000;
+    font-size: 0.8rem;
+    color: #666;
+}body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    color: white;
+}
+
+/* Slider Container (The Window) */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;  /* CHANGED: 100vh = 100% of the screen height */
+    overflow: hidden;
+}
+
+
+/* Slider Wrapper (The Moving Strip) */
+.slider-wrapper {
+    display: flex; /* Aligns slides horizontally */
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out; /* Smooth sliding animation */
+}
+
+/* Individual Slide */
+.slide {
+    min-width: 100%;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers area without distortion */
+}
+
+/* Buttons */
+button.prev-btn, button.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+}
+
+button.prev-btn {
+    left: 20px;
+}
+
+button.next-btn {
+    right: 20px;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.navbar {
+    position: absolute; /* This makes it float ON TOP of the slider */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Pushes Logo left, Links center, Icons right */
+    align-items: center;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    z-index: 100; /* Ensures it stays above the images */
+    color: white;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent); /* Slight shadow for readability */
+}
+
+/* Logo Section */
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo-symbol {
+    font-size: 20px;
+    line-height: 18px;
+    margin-right: 10px;
+    border-right: 2px solid white;
+    padding-right: 10px;
+    text-align: center;
+}
+
+.logo-text {
+    font-size: 25px; /* Makes text vertical like the image */
+    font-family: century gothic, sans-serif; /* Clean, modern font */
+    margin-left: 10px;
+
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Space between words */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #ddd; /* Light grey on hover */
+}
+
+/* Right Side Icons */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 18px;
+}
+
+.divider {
+    font-weight: 100;
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+/* --- Mobile Responsive Styles --- */
+@media (max-width: 768px) {
+    
+    /* 1. Adjust the header spacing */
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    /* 2. Hide the text links by default on mobile */
+    .nav-links {
+        display: none; /* Hidden! */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    /* 3. This class will be added by JavaScript when we click the icon */
+    .nav-links.active {
+        display: flex; /* Show it when active */
+    }
+
+    /* 4. Adjust slider height for smaller screens */
+    .slider-container {
+        height: 50vh; /* Use 50% of viewport height instead of fixed pixels */
+    }
+    
+    /* 5. Make the logo smaller */
+    .logo-symbol {
+        font-size: 16px;
+    }
+}
+
+/* --- Media Section Styling --- */
+.media-section {
+    background-color: white; /* Matches the white background in your image */
+    color: #333; /* Dark text for contrast */
+    padding: 60px 40px;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Creates 2 equal columns */
+    gap: 40px; /* Space between the items */
+    max-width: 1200px;
+    margin: 0 auto; /* Centers the grid on the page */
+}
+
+.media-item {
+    text-align: center;
+}
+
+.media-item h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+.media-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Make images and videos responsive */
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px; /* Optional: Slight rounding */
+}
+
+/* This trick makes YouTube videos responsive (16:9 ratio) */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Mobile Responsiveness for Grid --- */
+@media (max-width: 768px) {
+    .media-grid {
+        grid-template-columns: 1fr; /* Stack items 1 on top of another on phone */
+        padding: 0 20px;
+    }
+}
+
+/* --- Footer Styling --- */
+.site-footer {
+    background-color: black;
+    color: white;
+    padding: 60px 40px;
+    font-family: 'Helvetica', Arial, sans-serif; /* Clean font matches image */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between; /* Keeps them spread out */
+    max-width: 1400px; /* Increased max-width to use more screen space */
+    width: 100%; /* Ensures it fills the width */
+    margin: 0 auto;
+    padding: 0 20px; /* Small padding on left/right edges */
+    box-sizing: border-box; /* Ensures padding doesn't add to width */
+    flex-wrap: wrap; 
+}
+
+.footer-column {
+    flex: 1; 
+    min-width: 250px;
+    margin-bottom: 30px;
+    text-align: left; /* FORCE LEFT ALIGNMENT for all columns by default */
+    padding-right: 20px; /* Adds a little breathing room between columns */
+}
+
+/* Typography Colors */
+.gold-text {
+    color: #a89f81; /* The brownish-gold color from your image */
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+.white-text, .white-link {
+    color: white;
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 25px; /* Space between blocks */
+    display: block;
+    text-decoration: none;
+}
+
+.white-link.underline {
+    text-decoration: underline;
+}
+
+/* Right Side Specifics */
+.right-align {
+    text-align: right; /* Aligns text to the right side */
+}
+
+.footer-logo {
+    font-size: 24px;
+    letter-spacing: 2px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.footer-nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px; /* Space between links */
+    font-size: 14px;
+    text-transform: lowercase;
+}
+
+.copyright {
+    color: #666; /* Darker grey for copyright text */
+    font-size: 12px;
+    margin-top: 40px;
+}
+
+/* --- Mobile Responsiveness for Footer --- */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Stack columns vertically */
+    }
+
+    .right-align {
+        text-align: left; /* Reset alignment to left for mobile */
+        margin-top: 20px;
+    }
+
+    .footer-nav-links a {
+        margin-left: 0;
+        margin-right: 20px;
+    }
+}
+.footer-column.right-align {
+    text-align: right; 
+}
+
+/* --- EXISTING CODE for .media-item --- */
+.media-item {
+    text-align: center;
+    
+    /* NEW: Initial Animation State (Hidden & Pushed Down) */
+    opacity: 0;
+    transform: translateY(100px); /* Push it down 100px */
+    transition: all 0.8s ease-out; /* Smooth transition taking 0.8 seconds */
+}
+
+/* NEW: The "Visible" State (triggered by JS) */
+.media-item.visible {
+    opacity: 1;
+    transform: translateY(0); /* Return to original position */
+}
+
+/* --- Portfolio Banner --- */
+.page-banner {
+    /* Use a dark interior image for background */
+    background: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+    height: 40vh; /* Takes up top 40% of screen */
+    position: relative;
+    display: flex;
+    align-items: flex-end; /* Aligns content to bottom of banner */
+    padding-bottom: 40px;
+}
+
+/* Dark overlay to make text readable */
+.page-banner::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+}
+
+.banner-content {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between; /* "Services" Left, Breadcrumbs Right */
+    align-items: center;
+    color: white;
+    z-index: 10;
+}
+
+.banner-content h1 {
+    font-size: 48px;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.breadcrumbs {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.breadcrumbs a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.breadcrumbs a:hover {
+    color: #a89f81; /* Gold hover effect */
+}
+
+.breadcrumbs span {
+    margin: 0 8px;
+    color: #aaa;
+}
+
+.breadcrumbs .current {
+    color: #a89f81; /* Space Fillet accent color */
+}
+
+/* --- Filter Section --- */
+.filter-section {
+    text-align: center;
+    padding: 50px 0 30px;
+}
+
+.active-filter {
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #a89f81;
+    border-bottom: 2px solid #a89f81;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+/* --- Portfolio Grid (3 Columns) --- */
+.portfolio-section {
+    padding: 0 40px 80px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Equal Columns */
+    gap: 30px; /* Gap between images */
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Reuse existing .media-item logic, but tweak for grid */
+.portfolio-grid .media-item {
+    text-align: left; /* Align text left for portfolio items */
+    margin-bottom: 0;
+}
+
+.portfolio-grid h3 {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    text-align: center;
+}
+
+/* --- Mobile Responsiveness for Portfolio --- */
+@media (max-width: 768px) {
+    .page-banner {
+        height: 30vh;
+        padding-bottom: 20px;
+    }
+
+    .banner-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 0 20px;
+    }
+
+    .banner-content h1 {
+        font-size: 32px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* 1 Column on phone */
+        padding: 0 20px;
+    }
+}/* --- Fix Portfolio Image Heights --- */
+.portfolio-grid .image-container img {
+    height: 300px;       /* Sets a fixed height for all images */
+    width: 100%;         /* Ensures they fill the column width */
+    object-fit: cover;   /* Smart Crop: Cuts off edges to fit perfectly without stretching */
+    display: block;      /* Removes tiny gaps below images */
+}
+
+/* Optional: Adjust height for mobile screens */
+@media (max-width: 768px) {
+    .portfolio-grid .image-container img {
+        height: 250px;   /* Slightly smaller on phones */
+    }
+}
+
+/* --- Global Background --- */
+body {
+    background-color: white;
+    color: #333;
+}
+
+/* --- Portfolio Hover Effect --- */
+
+/* Ensure the item is a container for absolute positioning */
+.portfolio-grid .media-item {
+    position: relative;
+    overflow: hidden; /* Keeps the details box inside the image area */
+    cursor: pointer;
+}
+
+.project-details-box p {
+    font-size: 12px;
+    color: #666;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+}
+
+.portfolio-grid .media-item, 
+.media-grid .media-item {
+    position: relative;
+    overflow: hidden; 
+    cursor: pointer;
+}
+
+/* The Details Box Container */
+.project-details-box {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    padding: 20px 25px;
+    width: auto;
+    min-width: 200px;
+    max-width: 80%; /* Prevents it from being too wide on small images */
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+    text-align: left;
+    z-index: 10;
+
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s ease-in-out;
+}
+/* Show on Hover */
+.portfolio-grid .media-item:hover .project-details-box,
+.media-grid .media-item:hover .project-details-box {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Project Title Style */
+.project-details-box h3 {
+    margin: 0 0 5px 0; /* Less bottom margin since we might have a subtitle */
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* "VIEW DETAILS" Link Style */
+.view-details-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #a89f81;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.view-details-link:hover {
+    color: #8c846b;
+}
+
+/* Icon (Line + Circle) Styles */
+.view-details-link .icon-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.view-details-link .line {
+    height: 1px;
+    width: 30px;
+    background-color: #a89f81;
+    transition: background-color 0.3s;
+}
+
+.view-details-link .circle {
+    height: 20px;
+    width: 20px;
+    border: 1px solid #a89f81;
+    border-radius: 50%;
+    margin-left: -1px;
+    transition: border-color 0.3s;
+}
+
+/* Update icon color on link hover */
+.view-details-link:hover .line { background-color: #8c846b; }
+.view-details-link:hover .circle { border-color: #8c846b; }
+
+/* --- Services Page Styling --- */
+
+/* 1. Intro Section (Top Split) */
+.services-intro {
+    display: flex;
+    height: 100vh; /* Full screen height */
+    align-items: center;
+    overflow: hidden;
+}
+
+.intro-text {
+    width: 50%;
+    padding: 100px; /* Generous whitespace */
+    box-sizing: border-box;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.intro-image {
+    width: 50%;
+    height: 100%;
+}
+
+.intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.intro-text h1 {
+    font-size: 48px;
+    font-weight: normal;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.vertical-line {
+    width: 2px;
+    height: 60px;
+    background-color: #333;
+    margin-bottom: 30px;
+}
+
+.intro-text .quote {
+    font-size: 24px;
+    line-height: 1.4;
+    color: #444;
+    margin-bottom: 50px;
+    max-width: 400px;
+}
+
+/* 2. Services Rows (The Zig-Zag) */
+.services-list {
+    background: white;
+}
+
+.service-row {
+    display: flex; /* Side by side */
+    align-items: center;
+    width: 100%;
+    min-height: 500px; /* Each row has height */
+    overflow: hidden;
+    
+    /* Animation Base State (Reusing your media-item class logic) */
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 1s ease-out;
+}
+
+.service-row.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-image {
+    width: 50%;
+    height: 500px;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-info {
+    width: 50%;
+    padding: 0 80px; /* Padding inside the text box */
+    box-sizing: border-box;
+}
+
+.service-info h2 {
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.service-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    max-width: 500px;
+}
+
+/* --- THE TRICK: Flip every second row --- */
+.service-row:nth-child(even) {
+    flex-direction: row-reverse; /* Puts image on right, text on left */
+}
+.service-row:nth-child(even) .service-info {
+    text-align: right; /* Aligns text to right for variety (Optional) */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+/* --- Mobile Responsiveness for Services --- */
+@media (max-width: 768px) {
+    .services-intro {
+        flex-direction: column;
+        height: auto;
+    }
+    .intro-text, .intro-image {
+        width: 100%;
+    }
+    .intro-image {
+        height: 300px;
+    }
+    .intro-text {
+        padding: 40px 20px;
+    }
+    .intro-text h1 {
+        font-size: 32px;
+    }
+
+    .service-row {
+        flex-direction: column !important; /* Force stacking on phone */
+    }
+    
+    .service-image, .service-info {
+        width: 100%;
+    }
+    
+    .service-image {
+        height: 300px;
+    }
+    
+    .service-info {
+        padding: 40px 20px;
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+}
+
+/* --- Single Project Page Styling --- */
+
+/* Pure transparent navbar starting state */
+.navbar.project-nav {
+    background: transparent;
+    box-shadow: none;
+}
+
+/* 1. Hero Image */
+.project-hero {
+    width: 100%;
+    height: 100vh; /* Fills the whole screen initially */
+    overflow: hidden;
+}
+
+.project-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 2. Project Information (Split Section) */
+.project-info-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.project-description {
+    flex: 6; /* Takes up more space */
+}
+
+.project-title {
+    font-size: 36px;
+   font-family: lexend, sans-serif; /* Clean, modern font */
+    color: #8c2131; /* Deep red color from the video */
+    margin-top: 0;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    
+}
+
+.project-description p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #444;
+    
+}
+
+.project-details {
+    flex: 4; /* Takes up less space */
+    border-left: 1px solid #eee; /* Subtle separator line */
+    padding-left: 40px;
+}
+
+.details-heading {
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.details-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.details-list li {
+    display: flex;
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.details-list .label {
+    width: 150px; /* Fixed width for labels to align the values */
+    color: #777;
+}
+
+.details-list .value {
+    flex: 1;
+    color: #222;
+}
+
+/* 3. Image Gallery */
+.project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 40px 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Sizing for different gallery images */
+.gallery-item.full {
+    width: 100%;
+    height: 600px;
+}
+
+.gallery-item.half {
+    width: calc(50% - 10px); /* 50% width minus half the gap */
+    height: 500px;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .project-info-container {
+        flex-direction: column; /* Stack text and details on phone */
+        gap: 40px;
+        padding: 60px 20px;
+    }
+
+    .project-details {
+        border-left: none;
+        border-top: 1px solid #eee;
+        padding-left: 0;
+        padding-top: 30px;
+    }
+
+    .details-list li {
+        flex-direction: column; /* Stack label and value on phone */
+    }
+
+    .gallery-item.half {
+        width: 100%; /* Make half-images full width on mobile */
+        height: 300px;
+    }
+    
+    .gallery-item.full {
+        height: 300px;
+    }
+}
+/* --- Contact Page Styling --- */
+
+.contact-section {
+    padding: 80px 40px;
+    background-color: white;
+}
+
+.contact-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 60px; /* Space between info and form */
+}
+
+/* --- Left Side: Info --- */
+.contact-info-block {
+    flex: 1;
+    text-align: center; /* Centers text like in the image */
+    padding: 20px;
+}
+
+.contact-info-block h2 {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.contact-info-block .subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+.contact-info-block h3 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.contact-info-block .detail-text {
+    color: #333;
+    font-size: 15px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.social-icons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: #333;
+    color: white;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.social-circle:hover {
+    background-color: #a89f81;
+}
+
+/* --- Right Side: Form --- */
+.contact-form-block {
+    flex: 1;
+    padding: 20px;
+}
+
+.contact-form-block form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between input fields */
+}
+
+.contact-form-block input,
+.contact-form-block textarea {
+    width: 100%;
+    padding: 18px 20px;
+    background-color: #f5f5f5; /* Light grey background */
+    border: none;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #333;
+}
+
+.contact-form-block input:focus,
+.contact-form-block textarea:focus {
+    outline: 1px solid #ccc;
+}
+
+.contact-form-block textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    align-self: flex-start; /* Keeps button on the left side of the form */
+    background-color: #000;
+    color: #fff;
+    padding: 15px 40px;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #333;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column; /* Stack info on top of form on phones */
+        gap: 40px;
+    }
+}
+
+
+/* --- About Us Page Styling --- */
+
+/* Story Section */
+.about-story {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px 40px;
+    text-align: left;
+}
+
+.about-story h2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.about-story p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Team Section */
+.team-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 40px 100px;
+    text-align: center;
+}
+
+.team-section h2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* The Grid Layout */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+    gap: 60px 40px; /* Vertical and horizontal spacing */
+}
+
+/* Individual Team Member */
+.team-member {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* STRICT IMAGE SIZING - This fixes the issue in the video */
+.member-img-wrapper {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.member-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the circle perfectly */
+    filter: grayscale(100%); /* Start as black and white like the video */
+    transition: all 0.4s ease-in-out;
+}
+
+/* Modern Hover Effect: Turn to color and zoom slightly */
+.team-member:hover .member-img-wrapper img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+.team-member h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 5px 0;
+}
+
+.team-member p {
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+}
+
+/* --- Mobile Responsiveness for About Page --- */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+}
+
+@media (max-width: 500px) {
+    .team-grid {
+        grid-template-columns: 1fr; /* 1 column on small phones */
+    }
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="port/SPACE FILLET LOGO.png">
+    <title>PROJECT- Zest Garden</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-symbol"><img src="port/SPACE FILLET LOGO.png" alt="" style="height: 100px; margin-right: 10px; margin-top: 0;"></div>
+            <div class="logo-text">SPACE <br>FILLET</div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="protfolio.html">PORTFOLIO</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+
+        <div class="nav-icons">
+            <span class="icon menu-icon">&#9776;</span>  </div>
+    </nav>
+
+    <header class="project-hero">
+        <img src="port5/IMG_8202.JPG.jpeg" alt="Zest Garden">
+    </header>
+
+    <section class="project-info-container media-item">
+        
+        <div class="project-description" >
+            <h2 class="project-title" >Zest Garden</h2>
+            <p >Zest Garden is designed as a lively and refreshing dining space that captures the energy and vibrancy suggested by its name. The design draws inspiration from the warmth of citrus tones and the freshness of greenery, creating an environment that feels bright, welcoming, and full of life.
+
+Warm orange hues, brass accents, and terrazzo textures are balanced with abundant indoor plants and open terrace seating, bringing together warmth and natural freshness throughout the café. Softly illuminated niches, layered lighting, and textured materials add depth and character to the space while maintaining a relaxed and social atmosphere.
+
+The result is a vibrant terrace café that embodies the spirit of “zest”—a place where color, light, and greenery come together to create an energetic and inviting destination for dining and gathering.</p>
+        </div>
+
+        <div class="project-details">
+            <h3 class="details-heading">PROJECT INFORMATION</h3><br>
+            <ul class="details-list">
+                <li><span class="label">Location:</span> <span class="value">Karnal, Haryana</span></li>
+                <li><span class="label">Project Area:</span> <span class="value">3,000 sq.ft.</span></li>
+                <li><span class="label">Project Type:</span> <span class="value">Hospitality</span></li>
+                <li><span class="label">Project Language:</span> <span class="value">Warm Botanical</span></li>
+                <li><span class="label">Project Scope:</span> <span class="value">Interior Design And Execution</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="project-gallery">
+        <div class="gallery-item full media-item">
+            <img src="port5/IMG_8193.PNG" alt="Interior Bedroom">
+        </div>
+
+                <div class="gallery-item half media-item">
+            <img src="port5/IMG_8196.JPG.jpeg" alt="Walk-in Closet">
+        </div>
+        <div class="gallery-item half media-item">
+            <img src="port5/IMG_8202.JPG.jpeg" alt="Living Room">
+        </div>
+                <div class="gallery-item half media-item">
+            <img src="port5/IMG_8268.JPEG" alt="Interior Bedroom">
+        </div>
+        
+        <div class="gallery-item half media-item">
+            <img src="port5/IMG_8278.JPEG" alt="Walk-in Closet">
+        </div>
+        
+    </section>
+
+    
+
+
+
+
+
+
+<footer class="site-footer">
+        <div class="footer-container">
+            
+            <div class="footer-column">
+                <h4 class="gold-text">Studio Website</h4>
+                <a href="http://www.spacefillet.in" class="white-link underline" style="text-decoration: none;">www.spacefillet.in</a>
+                
+                <h4 class="gold-text">Email Address</h4>
+                <p class="white-link">enquiries@spacefillet.in</p>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="gold-text">Phone No</h4>
+                <p class="white-text">+91 7838426218, +91 8700052413, +91 9999130834</p>
+                
+                <h4 class="gold-text">Office Address</h4>
+                <a href="https://maps.app.goo.gl/HWMFcU3Bg2t2Ls2q8" style="text-decoration: none;"><p class="white-text">TS-930, HOPE TOWER, GALAXY BLUE SAPPHIRE MALL, GREATER NOIDA WEST, UTTAR PRADESH</p></a>
+            </div>
+
+            <div class="footer-column right-align">
+                <h2 class="footer-logo">SPACE FILLET</h2>
+                <div class="footer-nav-links">
+                    <a href="https://www.instagram.com/space.fillet?igsh=MXFseHA5b2xmaThwMw%3D%3D&utm_source=qr"><img src="index/insta.PNG" alt="" style="height: 30px;"></a>
+                    <a href="https://www.facebook.com/share/17zHxAiUyJ/?mibextid=wwXIfr"><img src="index/facebook.png" alt="" style="height: 30px;"></a>
+                   
+                </div>
+                <p class="copyright">SPACE FILLET 2023. All rights reserved</p>
+                
+            </div>
+
+        </div>
+    </footer>
+    <script>
+        // --- MOBILE MENU ---
+        const menuIcon = document.querySelector('.menu-icon');
+        const navLinks = document.querySelector('.nav-links');
+        if (menuIcon) { menuIcon.addEventListener('click', () => { navLinks.classList.toggle('active'); }); }
+
+        // --- STICKY HEADER ---
+        const navbar = document.querySelector('.navbar');
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop < 50) {
+                navbar.classList.remove('scroll-down', 'scroll-up');
+                lastScrollTop = scrollTop; return;
+            }
+            if (scrollTop > lastScrollTop) {
+                navbar.classList.remove('scroll-up'); navbar.classList.add('scroll-down');
+            } else {
+                navbar.classList.remove('scroll-down'); navbar.classList.add('scroll-up');
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // --- SCROLL ANIMATION ---
+        const observerOptions = { root: null, threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+                else { entry.target.classList.remove('visible'); }
+            });
+        }, observerOptions);
+        const mediaItems = document.querySelectorAll('.media-item');
+        mediaItems.forEach(item => { observer.observe(item); });
+    </script>
+</body>
+</html>
